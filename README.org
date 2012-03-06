@@ -12,8 +12,8 @@ and Org-mode is just text, I can add something like this into Org-mode:
 : ${HOME}/bin/vkextract_annotations_to_orgmode_snippet.sh Qian2008
 : #+end_src
 
-When I execute this in Org-mode (using babel: C-c C-c) its text output
-gets back right below:
+When I execute this in Org-mode (using [[http://orgmode.org/org.html#Evaluating-code-blocks][babel: C-c C-c]]) its text output
+gets back into Org-mode like this example demonstrates:
 
 : #+results:
 : #+begin_example
@@ -32,6 +32,31 @@ gets back right below:
 
 This method works with GNU Linux. Adaptations of paths and so forth
 are necessary in the script!
+
+* Bonus: .emacs setup
+
+These lines are part of my configuration. "C-c )" shows the reftex
+citation menu and with "j" I can insert a snippet for inserting
+annotations.
+
+The rest might be helpful for your setup as well.
+
+:  ;add a custom reftex cite format to insert links                                                                                  
+:  (reftex-set-cite-format                                                                                                           
+:   '((?b . "[[bib:%l][%l.bib]]")                                                                                                    
+:     (?n . "[[notes:%l][%l-notes]]")                                                                                                
+:     (?p . "[[papers:%l][%l.pdf]]")                                                                                                 
+:     (?h . (concat "** %l - %t\n:PROPERTIES:\n:CREATED: "                                                                           
+:           "<" (substring (format-time-string (org-time-stamp-format t t)) 1 -1) ">"                                                
+:           "\n:ID: %l\n:END:\n[[bib:%l][%l.bib]]\n[[papers:%l][%l.pdf]]\n\n"))                                                      
+:     (?j . (concat "*** PDF Annotations: [[annotated:%l][%l-notes.pdf]]\n:PROPERTIES:\n:CREATED: "                                  
+:           "<" (substring (format-time-string (org-time-stamp-format t t)) 1 -1) ">"                                                
+:           "\n:ID: %l-annotations\n:END:\n\n"                                                                                       
+:           "\#+begin_src sh :results output\n"                                                                                      
+:           "${HOME}/bin/vkextract_annotations_to_orgmode_snippet.sh %l\n"                                                           
+:                       "#+end_src\n\n"))                                                                                            
+:     ))))                                                                                                                           
+:  (define-key org-mode-map (kbd "C-c )") 'reftex-citation)
 
 * License
 
