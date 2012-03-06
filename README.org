@@ -57,7 +57,7 @@ The rest might be helpful for your setup as well.
 :                      "#+end_src\n\n"))                                                                                            
 :    ))))                                                                                                             
 :
-" ;; define shortcut for inserting references:              
+: ;; define shortcut for inserting references:              
 : (define-key org-mode-map (kbd "C-c )") 'reftex-citation)
 :
 : ;; define my own links for e.g. "papers:Voit2012" -> "~/archive/papers_from_web/Voit2012.pdf"
