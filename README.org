@@ -1,0 +1,32 @@
+* Extracting RepliGo PDF annotations to a Org-mode format snippet
+
+I annotate PDF research paper files on my tablet using
+[[http://www.cerience.com/products/reader/android][RepliGo Reader for Android]]. Because I am managing my research papers
+within [[http://orgmode.org][Org-mode]] similar to [[http://tincman.wordpress.com/2011/01/04/research-paper-management-with-emacs-org-mode-and-reftex/][this description]] I want to get the PDF
+annotations back out from the PDF files and into my Org-mode files.
+
+Since RepliGo stores its annotations very parser-friendly (it's text!)
+and Org-mode is just text, I can add something like this into Org-mode:
+
+: #+begin_src sh :results output
+: ${HOME}/bin/vkextract_annotations_to_orgmode_snippet.sh Qian2008
+: #+end_src
+
+When I execute this in Org-mode (using babel: C-c C-c) its text output
+gets back right below:
+
+: #+results:
+: #+begin_example
+: ---- HIGHLIGHTS: ---
+: Manage Radiologic Portable Document Format \(PDF\) Files Using iTunes
+: In this article, we explain how to use the hidden function of iTunes \(Apple Computer\) to manage PDF documents as easily as managing music fles.
+: PDF
+: 
+: #+end_example
+: 
+: Sticky Notes:
+: #+begin_example
+: ---- NOTES: ---
+: This paper seems to be very relevant to my PIM study!
+: #+end_example
+
