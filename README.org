@@ -30,6 +30,9 @@ gets back right below:
 : This paper seems to be very relevant to my PIM study!
 : #+end_example
 
+This method works with GNU Linux. Adaptations of paths and so forth
+are necessary in the script!
+
 * License
 
 [[http://www.gnu.org/copyleft/gpl.html][GPL v3 or newer]]
