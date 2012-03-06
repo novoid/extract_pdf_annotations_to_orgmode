@@ -30,3 +30,6 @@ gets back right below:
 : This paper seems to be very relevant to my PIM study!
 : #+end_example
 
+* License
+
+[[http://www.gnu.org/copyleft/gpl.html][GPL v3 or newer]]
