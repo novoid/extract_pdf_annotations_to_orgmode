@@ -41,22 +41,33 @@ annotations.
 
 The rest might be helpful for your setup as well.
 
-:  ;add a custom reftex cite format to insert links                                                                                  
-:  (reftex-set-cite-format                                                                                                           
-:   '((?b . "[[bib:%l][%l.bib]]")                                                                                                    
-:     (?n . "[[notes:%l][%l-notes]]")                                                                                                
-:     (?p . "[[papers:%l][%l.pdf]]")                                                                                                 
-:     (?h . (concat "** %l - %t\n:PROPERTIES:\n:CREATED: "                                                                           
-:           "<" (substring (format-time-string (org-time-stamp-format t t)) 1 -1) ">"                                                
-:           "\n:ID: %l\n:END:\n[[bib:%l][%l.bib]]\n[[papers:%l][%l.pdf]]\n\n"))                                                      
-:     (?j . (concat "*** PDF Annotations: [[annotated:%l][%l-notes.pdf]]\n:PROPERTIES:\n:CREATED: "                                  
-:           "<" (substring (format-time-string (org-time-stamp-format t t)) 1 -1) ">"                                                
-:           "\n:ID: %l-annotations\n:END:\n\n"                                                                                       
-:           "\#+begin_src sh :results output\n"                                                                                      
-:           "${HOME}/bin/vkextract_annotations_to_orgmode_snippet.sh %l\n"                                                           
-:                       "#+end_src\n\n"))                                                                                            
-:     ))))                                                                                                                           
-:  (define-key org-mode-map (kbd "C-c )") 'reftex-citation)
+: ;;add a custom reftex cite format to insert links                                                                                  
+: (reftex-set-cite-format                                                                                                           
+:  '((?b . "[[bib:%l][%l.bib]]")                                                                                                    
+:    (?n . "[[notes:%l][%l-notes]]")                                                                                                
+:    (?p . "[[papers:%l][%l.pdf]]")                                                                                                 
+:    (?h . (concat "** %l - %t\n:PROPERTIES:\n:CREATED: "                                                                           
+:          "<" (substring (format-time-string (org-time-stamp-format t t)) 1 -1) ">"                                                
+:          "\n:ID: %l\n:END:\n[[bib:%l][%l.bib]]\n[[papers:%l][%l.pdf]]\n\n"))                                                      
+:    (?j . (concat "*** PDF Annotations: [[annotated:%l][%l-notes.pdf]]\n:PROPERTIES:\n:CREATED: "                                  
+:          "<" (substring (format-time-string (org-time-stamp-format t t)) 1 -1) ">"                                                
+:          "\n:ID: %l-annotations\n:END:\n\n"                                                                                       
+:          "\#+begin_src sh :results output\n"                                                                                      
+:          "${HOME}/bin/vkextract_annotations_to_orgmode_snippet.sh %l\n"                                                           
+:                      "#+end_src\n\n"))                                                                                            
+:    ))))                                                                                                             
+:
+" ;; define shortcut for inserting references:              
+: (define-key org-mode-map (kbd "C-c )") 'reftex-citation)
+:
+: ;; define my own links for e.g. "papers:Voit2012" -> "~/archive/papers_from_web/Voit2012.pdf"
+: (setq org-link-abbrev-alist                                                                                                            
+:       '(                                                                                                                               
+:     ("bib" . "~/archive/papers_from_web/references.bib::%s")                                                                           
+:     ("notes" . "~/share/all/org-mode/references.org::*%s")                                                                             
+:     ("papers" . "~/archive/papers_from_web/%s.pdf")                                                                                    
+:     ("annotated" . "~/archive/papers_from_web/%s-notes.pdf")                                                                           
+:     ))
 
 * License
 
