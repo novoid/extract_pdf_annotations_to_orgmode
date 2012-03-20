@@ -33,6 +33,19 @@ gets back into Org-mode like this example demonstrates:
 This method works with GNU Linux. Adaptations of paths and so forth
 are necessary in the script!
 
+* Be aware of special characters and German umlauts
+
+RepliGo does create «easy to extract» annotations under normal
+circumstances. But when you
+
+- highlight special characters such as [[http://en.wikipedia.org/wiki/Germanic_umlaut#German_orthography][German umlauts]],
+- OR add sticky notes or text information containing non-[[http://en.wikipedia.org/wiki/Ascii#ASCII_printable_characters][ASCII]] characters,
+
+RepliGo Reader Android switches to an UTF encoding. PDF files with
+annotations stored as UTF can not extracted with this simple method
+presented here. In this case you'll notice (only) funny characters in
+the output of this script.
+
 * Bonus: .emacs setup
 
 These lines are part of my configuration. "C-c )" shows the reftex
@@ -44,12 +57,12 @@ The rest might be helpful for your setup as well.
 : ;;add a custom reftex cite format to insert links                                                                                  
 : (reftex-set-cite-format                                                                                                           
 :  '((?b . "[[bib:%l][%l.bib]]")                                                                                                    
-:    (?n . "[[notes:%l][%l-notes]]")                                                                                                
-:    (?p . "[[papers:%l][%l.pdf]]")                                                                                                 
+:    (?r . "[[ref:%l][%l]]")                                                                                                
+:    (?p . "[[pdf:%l][%l.pdf]]")                                                                                                 
 :    (?h . (concat "** %l - %t\n:PROPERTIES:\n:CREATED: "                                                                           
 :          "<" (substring (format-time-string (org-time-stamp-format t t)) 1 -1) ">"                                                
 :          "\n:ID: %l\n:END:\n[[bib:%l][%l.bib]]\n[[papers:%l][%l.pdf]]\n\n"))                                                      
-:    (?j . (concat "*** PDF Annotations: [[annotated:%l][%l-notes.pdf]]\n:PROPERTIES:\n:CREATED: "                                  
+:    (?n . (concat "*** PDF Annotations: [[%l-notes.pdf][%l-notes.pdf]]\n:PROPERTIES:\n:CREATED: "                                  
 :          "<" (substring (format-time-string (org-time-stamp-format t t)) 1 -1) ">"                                                
 :          "\n:ID: %l-annotations\n:END:\n\n"                                                                                       
 :          "\#+begin_src sh :results output\n"                                                                                      
@@ -60,15 +73,18 @@ The rest might be helpful for your setup as well.
 : ;; define shortcut for inserting references:              
 : (define-key org-mode-map (kbd "C-c )") 'reftex-citation)
 :
-: ;; define my own links for e.g. "papers:Voit2012" -> "~/archive/papers_from_web/Voit2012.pdf"
+: ;; define my own links for e.g. "[[pdf:Voit2012]]" -> "~/archive/papers_from_web/Voit2012.pdf"
 : (setq org-link-abbrev-alist                                                                                                            
 :       '(                                                                                                                               
 :     ("bib" . "~/archive/papers_from_web/references.bib::%s")                                                                           
-:     ("notes" . "~/share/all/org-mode/references.org::*%s")                                                                             
-:     ("papers" . "~/archive/papers_from_web/%s.pdf")                                                                                    
-:     ("annotated" . "~/archive/papers_from_web/%s-notes.pdf")                                                                           
+:     ("ref" . "~/share/all/org-mode/references.org::/%s/")                                                                             
+:     ("pdf" . "~/archive/papers_from_web/%s.pdf")                                                                                    
+:     ("notes" . "~/archive/papers_from_web/%s-notes.pdf")                                                                           
 :     ))
 
 * License
 
-[[http://www.gnu.org/copyleft/gpl.html][GPL v3 or newer]]
+This documentation is licensed under a [[http://creativecommons.org/licenses/by-nc-sa/3.0/][Creative Commons
+Attribution-NonCommercial-ShareAlike 3.0 Unported License]].
+
+The script file is licenced under [[http://www.gnu.org/copyleft/gpl.html][GPL v3 or newer]].
