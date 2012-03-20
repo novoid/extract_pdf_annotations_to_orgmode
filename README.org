@@ -88,3 +88,59 @@ This documentation is licensed under a [[http://creativecommons.org/licenses/by-
 Attribution-NonCommercial-ShareAlike 3.0 Unported License]].
 
 The script file is licenced under [[http://www.gnu.org/copyleft/gpl.html][GPL v3 or newer]].
+
+* Example
+
+This is an example entry of one paper in my «references.org» file:
+
+** DONE Voit2011 - TagTree: storing and Re-Finding Files Using Tags  :prioritized:to_read:
+CLOSED: [2011-11-20 Sun 23:19]
+:PROPERTIES:
+:CREATED: <2011-11-20 Sun 23:19>
+:ID: Voit2011
+:END:
+[[bib:Voit2011][Voit2011.bib]]
+[[pdf:Voit2011][Voit2011.pdf]]
+
+ISBN-13: 978-3-642-25363-8
+ISBN-10: 3-642-25363-6
+http://www.meduni-graz.at/imi/usab2011/
+24-26 Nov 2011, Graz, Austria
+http://www.springerlink.com/content/978-3-642-25363-8
+
+- acceptance rate USAB2011: 18%
+- this paper got recommended by [[contact:John Smith][John Smith]] on CHI2012
+
+*** PDF Annotations: [[notes:Voit2011][Voit2011-notes.pdf]]
+:PROPERTIES:
+:CREATED: <2012-03-19 Mon 20:36>
+:ID: Voit2011-notes
+:END:
+
+#+begin_src sh :results output
+${HOME}/bin/vkextract_annotations_to_orgmode_snippet.sh Voit2011
+#+end_src
+
+#+RESULTS:
+#+begin_example
+---- HIGHLIGHTS: ---
+navigation through folder hierarchies is
+still the dominant mode of information access
+strict hierarchy of folders
+This paper describes TagTree, a new concept for storing and retrieving
+files and folders using tagging and automatically maintained
+navigational hierarchies.
+compatible with all currently prevalent
+software
+implementation called tagstore
+provides a flexible framework for experimentation and a testbed for both
+usability studies and longer term field tests.
+[...]
+#+end_example
+
+Annotations:
+#+begin_example
+---- Annotations: ---
+this paper seems relevant to me
+the authors seem to have achieved clever system integration
+#+end_example
