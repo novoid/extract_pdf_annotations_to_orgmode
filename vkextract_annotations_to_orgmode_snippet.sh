@@ -6,7 +6,7 @@ PAPERBASENAME="${1}"
 NOTES_POSTFIX="-notes"
 
 ## the path where all PDF files of papers are stored:
-PAPERPATH="${HOME}/archive/papers_from_web"
+PAPERPATH="${HOME}/archive/library"
 
 ## build the exact file name of the annotated PDF file:
 ## EXAMPLE: for the paper "Name2012.pdf" I keep "Name2012-notes.pdf" with annotations within
