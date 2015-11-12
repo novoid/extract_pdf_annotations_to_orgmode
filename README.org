@@ -144,3 +144,10 @@ Annotations:
 this paper seems relevant to me
 the authors seem to have achieved clever system integration
 #+end_example
+
+* Alternatives
+
+Matt published
+[[http://matt.hackinghistory.ca/2015/11/11/note-taking-with-pdf-tools/][a very
+similar method on his blog]]. You might as well check it out.
+
